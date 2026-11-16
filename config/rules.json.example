@@ -1,0 +1,221 @@
+{
+  "proxy_host": "127.0.0.1",
+  "proxy_port": 8080,
+  "dashboard_port": 8081,
+  "blacklisted_domains": [
+    "example.com",
+    "malicious-test.org",
+    "facebook.com",
+    "tiktok.com",
+    "gambling-site.net",
+    "instagram.com",
+    "twitter.com",
+    "x.com",
+    "reddit.com",
+    "snapchat.com",
+    "pinterest.com",
+    "linkedin.com",
+    "netflix.com",
+    "twitch.tv",
+    "dailymotion.com",
+    "bet365.com",
+    "pokerstars.com",
+    "draftkings.com",
+    "bovada.lv",
+    "stake.com",
+    "doubleclick.net",
+    "adnxs.com",
+    "criteo.com",
+    "taboola.com",
+    "outbrain.com",
+    "wicar.org",
+    "badssl.com",
+    "eicar.org",
+    "testfire.net",
+    "thepiratebay.org",
+    "1337x.to",
+    "yts.mx",
+    "coinhive.com",
+    "crypto-loot.com"
+  ],
+  "blocked_url_paths": [
+    "/admin-panel",
+    "/phpmyadmin",
+    "/wp-login.php",
+    "/.env",
+    "/wp-admin",
+    "/.git",
+    "/config.php",
+    "/server-status",
+    "/actuator",
+    "/api/v1/debug",
+    "/shell.php",
+    "/backup.sql"
+  ],
+  "blocked_keywords": [
+    "cmd.exe",
+    "/etc/passwd",
+    "eval(",
+    "base64_decode"
+  ],
+  "blocked_user_agents": [
+    "sqlmap",
+    "nikto",
+    "nmap",
+    "curl-bot"
+  ],
+  "sqli_signatures": [
+    {
+      "name": "SQLi-Boolean-Quote",
+      "pattern": "('|\")\\s*(or|and)\\s*('|\")?1('|\")?\\s*=\\s*('|\")?1('|\")?"
+    },
+    {
+      "name": "SQLi-Boolean-Numeric",
+      "pattern": "('|\")\\s*(or|and)\\s+1\\s*=\\s*1"
+    },
+    {
+      "name": "SQLi-Union-Select",
+      "pattern": "union\\s+(all\\s+)?select"
+    },
+    {
+      "name": "SQLi-Drop-Table",
+      "pattern": "drop\\s+table"
+    },
+    {
+      "name": "SQLi-Sleep-Benchmark",
+      "pattern": "(sleep|benchmark)\\s*\\("
+    },
+    {
+      "name": "SQLi-Comment-Dash",
+      "pattern": "(--|;--)"
+    }
+  ],
+  "xss_signatures": [
+    {
+      "name": "XSS-Script-Tag",
+      "pattern": "<\\s*script[^>]*>"
+    },
+    {
+      "name": "XSS-Javascript-URI",
+      "pattern": "javascript\\s*:"
+    },
+    {
+      "name": "XSS-Event-OnError",
+      "pattern": "onerror\\s*="
+    },
+    {
+      "name": "XSS-Event-OnLoad",
+      "pattern": "onload\\s*="
+    },
+    {
+      "name": "XSS-Alert-Call",
+      "pattern": "alert\\s*\\("
+    },
+    {
+      "name": "XSS-Document-Cookie",
+      "pattern": "document\\.cookie"
+    },
+    {
+      "name": "XSS-IFrame-Tag",
+      "pattern": "<\\s*iframe[^>]*>"
+    }
+  ],
+  "acl_rules": [
+    {
+      "id": 1,
+      "priority": 100,
+      "action": "ALLOW",
+      "direction": "INBOUND",
+      "protocol": "TCP",
+      "source_cidr": "0.0.0.0/0",
+      "dest_cidr": "0.0.0.0/0",
+      "dest_port": 22,
+      "interface": "ANY",
+      "is_enabled": 1
+    },
+    {
+      "id": 2,
+      "priority": 200,
+      "action": "ALLOW",
+      "direction": "INBOUND",
+      "protocol": "TCP",
+      "source_cidr": "0.0.0.0/0",
+      "dest_cidr": "0.0.0.0/0",
+      "dest_port": 8081,
+      "interface": "ANY",
+      "is_enabled": 1
+    },
+    {
+      "id": 3,
+      "priority": 250,
+      "action": "ALLOW",
+      "direction": "INBOUND",
+      "protocol": "ANY",
+      "source_cidr": "127.0.0.0/8",
+      "dest_cidr": "0.0.0.0/0",
+      "dest_port": null,
+      "interface": "ANY",
+      "is_enabled": 1
+    },
+    {
+      "id": 4,
+      "priority": 300,
+      "action": "ALLOW",
+      "direction": "INBOUND",
+      "protocol": "ANY",
+      "source_cidr": "192.168.1.0/24",
+      "dest_cidr": "0.0.0.0/0",
+      "dest_port": null,
+      "interface": "ANY",
+      "is_enabled": 1
+    },
+    {
+      "id": 5,
+      "priority": 400,
+      "action": "ALLOW",
+      "direction": "INBOUND",
+      "protocol": "TCP",
+      "source_cidr": "0.0.0.0/0",
+      "dest_cidr": "0.0.0.0/0",
+      "dest_port": 80,
+      "interface": "ANY",
+      "is_enabled": 1
+    },
+    {
+      "id": 6,
+      "priority": 500,
+      "action": "ALLOW",
+      "direction": "INBOUND",
+      "protocol": "TCP",
+      "source_cidr": "0.0.0.0/0",
+      "dest_cidr": "0.0.0.0/0",
+      "dest_port": 443,
+      "interface": "ANY",
+      "is_enabled": 1
+    },
+    {
+      "id": 10,
+      "priority": 888,
+      "action": "DROP",
+      "direction": "INBOUND",
+      "protocol": "TCP",
+      "source_cidr": "198.51.100.0/24",
+      "dest_cidr": "0.0.0.0/0",
+      "dest_port": 80,
+      "interface": "ANY",
+      "is_enabled": 1
+    },
+    {
+      "id": 7,
+      "priority": 999,
+      "action": "DROP",
+      "direction": "INBOUND",
+      "protocol": "ANY",
+      "source_cidr": "0.0.0.0/0",
+      "dest_cidr": "0.0.0.0/0",
+      "dest_port": null,
+      "interface": "ANY",
+      "is_enabled": 1
+    }
+  ]
+}

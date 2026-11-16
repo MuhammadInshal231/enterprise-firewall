@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Proxy Firewall SOC Telemetry</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="top-bar">
+    <div class="brand">
+      <span class="shield-icon">&#9632;</span>
+      <span class="title">Enterprise Application Proxy Firewall</span>
+      <span class="badge tier" id="tier-badge">ENTERPRISE</span>
+    </div>
+    <div class="auth-box">
+      <span id="user-display" class="user-text">Not Logged In</span>
+      <button id="auth-btn" class="btn btn-sm">Login</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="metrics-grid">
+      <div class="card metric">
+        <div class="metric-label">Total Traffic Volume</div>
+        <div class="metric-value" id="val-bytes">0 B</div>
+        <div class="metric-sub" id="val-bps">0 bps</div>
+      </div>
+      <div class="card metric">
+        <div class="metric-label">Inspected Packets</div>
+        <div class="metric-value" id="val-packets">0</div>
+        <div class="metric-sub" id="val-pps">0 pps</div>
+      </div>
+      <div class="card metric threat">
+        <div class="metric-label">Threats Dropped</div>
+        <div class="metric-value danger" id="val-dropped">0</div>
+        <div class="metric-sub danger" id="val-dps">0 drops/s</div>
+      </div>
+      <div class="card metric">
+        <div class="metric-label">Active SPI Sessions</div>
+        <div class="metric-value highlight" id="val-sessions">0</div>
+        <div class="metric-sub">5-tuple tracking</div>
+      </div>
+    </div>
+
+    <div class="actions-bar">
+      <button id="export-rules-btn" class="btn">Export Rules (JSON)</button>
+      <button id="export-logs-btn" class="btn">Export Logs (CSV)</button>
+    </div>
+
+    <div class="card panel">
+      <div class="panel-header">
+        <div class="panel-title">Real-Time Threat Telemetry Stream</div>
+        <span class="live-dot"></span>
+      </div>
+      <div class="table-container">
+        <table class="table" id="events-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Timestamp</th>
+              <th>Source IP</th>
+              <th>Dest Host</th>
+              <th>Port</th>
+              <th>Threat Type</th>
+              <th>Action</th>
+              <th>Payload</th>
+            </tr>
+          </thead>
+          <tbody id="events-body">
+            <tr><td colspan="8" class="text-center">Awaiting security events...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid-2col">
+      <div class="card panel">
+        <div class="panel-header">
+          <div class="panel-title">Active ACL Rules</div>
+        </div>
+        <div class="rule-form" id="rule-form">
+          <input type="number" id="rf-priority" placeholder="Priority" min="1" max="999" value="150">
+          <select id="rf-action">
+            <option value="ALLOW">ALLOW</option>
+            <option value="DROP">DROP</option>
+            <option value="REJECT">REJECT</option>
+          </select>
+          <input type="text" id="rf-cidr" placeholder="Source CIDR (e.g. 10.0.0.0/8)" value="0.0.0.0/0">
+          <input type="number" id="rf-port" placeholder="Port (e.g. 80)" min="1" max="65535">
+          <button id="btn-add-rule" class="btn btn-primary">Add Rule</button>
+        </div>
+        <div class="table-container">
+          <table class="table" id="rules-table">
+            <thead>
+              <tr>
+                <th>Prio</th>
+                <th>Action</th>
+                <th>Proto</th>
+                <th>Source CIDR</th>
+                <th>Port</th>
+                <th>Del</th>
+              </tr>
+            </thead>
+            <tbody id="rules-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card panel">
+        <div class="panel-header">
+          <div class="panel-title">Active IDS Auto-Bans</div>
+        </div>
+        <div class="ban-form">
+          <input type="text" id="bf-ip" placeholder="Target IP (e.g. 192.168.1.50)">
+          <input type="number" id="bf-duration" placeholder="Duration (s)" value="300">
+          <button id="btn-add-ban" class="btn btn-danger">Ban IP</button>
+        </div>
+        <div class="table-container">
+          <table class="table" id="bans-table">
+            <thead>
+              <tr>
+                <th>IP Address</th>
+                <th>Reason</th>
+                <th>Expires</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="bans-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="login-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Administrative Login</div>
+        <span id="close-modal" class="close">&times;</span>
+      </div>
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" id="login-username" placeholder="admin or auditor">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="login-password" placeholder="Password">
+      </div>
+      <div id="login-err" class="danger-text"></div>
+      <button id="login-submit" class="btn btn-primary btn-block">Authenticate</button>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
+
