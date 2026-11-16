@@ -1,33 +1,41 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+wheels/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE / editor
+.vscode/
+.idea/
+.DS_Store
+
+# Project-specific
 firewall.db
 firewall.db-wal
 firewall.db-shm
-*.db
-
+config/license.key
+config/rules.json
+config/settings.ini
 logs/*.log
 logs/*.csv
 !logs/.gitkeep
-
-config/license.key
-!config/license.key.example
-config/rules.json
-!config/rules.json.example
-config/settings.ini
-!config/settings.ini.example
-
-.venv/
-venv/
-ENV/
-env/
-
-.vscode/
-.idea/
-*.swp
-*.swo
-
-.DS_Store
-Thumbs.db
-
