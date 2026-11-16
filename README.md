@@ -134,7 +134,7 @@ python verification/verify_spi_engine.py
 
 ## License
 
-This project is licensed under **Creative Commons Attribution 4.0 (CC BY 4.0)** — see [LICENSE](LICENSE) for the full terms.
+This project is licensed under the **MIT License** — see [LICENSE](LICENSE) for the full terms.
 
 Additional usage guidelines, including a prohibition on unlawful use, are in [ACCEPTABLE_USE.md](ACCEPTABLE_USE.md).
 
