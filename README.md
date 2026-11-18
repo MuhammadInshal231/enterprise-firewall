@@ -134,12 +134,12 @@ python verification/verify_spi_engine.py
 
 ## License
 
-Licensed under the Inshal Software License. See the [LICENSE](LICENSE) ([Markdown](LICENSE.md) | [PDF](Inshal_Software_License.pdf)) file.  
+Licensed under the Inshal Software License. See the [LICENSE](LICENSE) or [LICENSE.md](LICENSE.md) file, or [Inshal_Software_License.pdf](Inshal_Software_License.pdf).  
 Free to use, modify and sell. Please credit the creator.  
 No illegal or unauthorized use.  
 
-**Original Author:** Muhammad Inshal  
-**Original Repository:** [https://github.com/MuhammadInshal231/enterprise-firewall](https://github.com/MuhammadInshal231/enterprise-firewall)
+Original Author: Muhammad Inshal  
+Original Repository: https://github.com/MuhammadInshal231/enterprise-firewall
 
 ---
 
