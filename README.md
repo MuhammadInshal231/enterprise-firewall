@@ -134,9 +134,12 @@ python verification/verify_spi_engine.py
 
 ## License
 
-This project is licensed under the **MIT License** — see [LICENSE](LICENSE) for the full terms.
+Licensed under the Inshal Software License. See the [LICENSE](LICENSE) ([Markdown](LICENSE.md) | [PDF](Inshal_Software_License.pdf)) file.  
+Free to use, modify and sell. Please credit the creator.  
+No illegal or unauthorized use.  
 
-Additional usage guidelines, including a prohibition on unlawful use, are in [ACCEPTABLE_USE.md](ACCEPTABLE_USE.md).
+**Original Author:** Muhammad Inshal  
+**Original Repository:** [https://github.com/MuhammadInshal231/enterprise-firewall](https://github.com/MuhammadInshal231/enterprise-firewall)
 
 ---
 
